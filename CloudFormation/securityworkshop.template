@@ -1,0 +1,895 @@
+{
+   "AWSTemplateFormatVersion":"2010-09-09",
+   "Parameters":{
+      "VPCCIDR":{
+         "Type":"String",
+         "Description":"IP Address range for the VPN connected VPC",
+         "MinLength":"9",
+         "MaxLength":"18",
+         "Default":"172.5.0.0/16",
+         "AllowedPattern":"(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+         "ConstraintDescription":"must be a valid IP CIDR range of the form x.x.x.x/x.",
+         "AllowedValues":["172.5.0.0/16"]
+                  },
+
+      "RDSUsername": {
+      "Type": "String",
+      "AllowedValues": ["admin"]
+                      },
+
+      "RDSPassword": {
+      "Type": "String",
+      "AllowedValues": ["securityworkshop"]
+                      },
+
+      "KeyName":{
+         "Description":"Name of an existing EC2 KeyPair to enable SSH access to the instances",
+         "Type":"AWS::EC2::KeyPair::KeyName",
+         "ConstraintDescription":"must be the name of an existing EC2 KeyPair."
+
+}
+
+},
+   "Resources":{
+      "VPCCFIaaC":{
+         "Type":"AWS::EC2::VPC",
+         "Properties":{
+            "CidrBlock":{
+               "Ref":"VPCCIDR"
+
+},
+            "EnableDnsSupport":"true",
+            "EnableDnsHostnames":"true",
+            "InstanceTenancy":"default",
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"VPC-CF"
+
+}
+
+]
+
+}
+
+},
+      "Subnet01":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.0.0/24",
+            "MapPublicIpOnLaunch":"true",
+            "AvailabilityZone":"ap-southeast-1a",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PublicSub-AZ1A"
+
+}
+
+]
+
+}
+
+},
+      "Subnet02":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.1.0/24",
+            "MapPublicIpOnLaunch":"true",
+            "AvailabilityZone":"ap-southeast-1b",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PublicSub-AZ1B"
+
+}
+
+]
+
+}
+
+},
+      "Subnet03":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.2.0/24",
+            "MapPublicIpOnLaunch":"true",
+            "AvailabilityZone":"ap-southeast-1c",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PublicSub-AZ1C"
+
+}
+
+]
+
+}
+
+},
+      "Subnet04":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.3.0/24",
+            "MapPublicIpOnLaunch":"false",
+            "AvailabilityZone":"ap-southeast-1a",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"NATSub-AZ1A"
+
+}
+
+]
+
+}
+
+},
+      "Subnet05":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.4.0/24",
+            "MapPublicIpOnLaunch":"false",
+            "AvailabilityZone":"ap-southeast-1b",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"NATSub-AZ1B"
+
+}
+
+]
+
+}
+
+},
+      "Subnet06":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.5.0/24",
+            "MapPublicIpOnLaunch":"false",
+            "AvailabilityZone":"ap-southeast-1c",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"NATSub-AZ1C"
+
+}
+
+]
+
+}
+
+},
+      "Subnet07":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.6.0/24",
+            "MapPublicIpOnLaunch":"false",
+            "AvailabilityZone":"ap-southeast-1a",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PRVSub-AZ1A"
+
+}
+
+]
+
+}
+
+},
+      "Subnet08":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.7.0/24",
+            "MapPublicIpOnLaunch":"false",
+            "AvailabilityZone":"ap-southeast-1b",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PRVSub-AZ1B"
+
+}
+
+]
+
+}
+
+},
+      "Subnet09":{
+         "Type":"AWS::EC2::Subnet",
+         "Properties":{
+            "CidrBlock":"172.5.8.0/24",
+            "MapPublicIpOnLaunch":"false",
+            "AvailabilityZone":"ap-southeast-1c",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PRVSub-AZ1C"
+
+}
+
+]
+
+}
+
+},
+      "NATRoute":{
+         "Type":"AWS::EC2::Route",
+         "Properties":{
+            "RouteTableId":{
+               "Ref":"NATRouteTable"
+
+},
+            "DestinationCidrBlock":"0.0.0.0/0",
+            "NatGatewayId":{
+               "Ref":"NAT"
+
+}
+
+}
+
+},
+      "IGRoute":{
+         "Type":"AWS::EC2::Route",
+         "DependsOn":"InternetGateway",
+         "Properties":{
+            "RouteTableId":{
+               "Ref":"IGRouteTable"
+
+},
+            "DestinationCidrBlock":"0.0.0.0/0",
+            "GatewayId":{
+               "Ref":"InternetGateway"
+
+}
+
+}
+
+},
+      "InternetGateway":{
+         "Type":"AWS::EC2::InternetGateway",
+         "Properties":{
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"IG For CF IaaC"
+
+}
+
+]
+
+}
+
+},
+      "AttachGateway":{
+         "Type":"AWS::EC2::VPCGatewayAttachment",
+         "Properties":{
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "InternetGatewayId":{
+               "Ref":"InternetGateway"
+
+}
+
+}
+
+},
+      "NATRouteTable":{
+         "Type":"AWS::EC2::RouteTable",
+         "Properties":{
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"NAT RT"
+
+}
+
+]
+
+}
+
+},
+      "IGRouteTable":{
+         "Type":"AWS::EC2::RouteTable",
+         "Properties":{
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"IG RT"
+
+}
+
+]
+
+}
+
+},
+      "PRVRouteTable":{
+         "Type":"AWS::EC2::RouteTable",
+         "Properties":{
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"PRV RT"
+
+}
+
+]
+
+}
+
+},
+      "NAT":{
+         "Type":"AWS::EC2::NatGateway",
+         "Properties":{
+            "AllocationId":{
+               "Fn::GetAtt":[
+                  "NATEIP",
+                  "AllocationId"
+
+]
+
+},
+            "SubnetId":{
+               "Ref":"Subnet01"
+
+},
+            "Tags":[
+               {
+                  "Key":"Name",
+                  "Value":"NAT Gateway"
+
+}
+
+]
+
+}
+
+},
+      "DefaultSecGRP":{
+         "Type":"AWS::EC2::SecurityGroup",
+         "DependsOn":"VPCCFIaaC",
+         "Properties":{
+            "GroupDescription":"SG allow all",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "SecurityGroupIngress":[
+               {
+                  "IpProtocol":"-1",
+                  "CidrIp":"0.0.0.0/0"
+
+}
+
+]
+
+}
+
+},
+
+
+      "NATEIP":{
+         "Type":"AWS::EC2::EIP",
+         "Properties":{
+            "Domain":"vpc"
+
+}
+
+},
+      "IGRouteTableAssociation01":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet01"
+
+},
+            "RouteTableId":{
+               "Ref":"IGRouteTable"
+
+}
+
+}
+
+},
+      "IGRouteTableAssociation02":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet02"
+
+},
+            "RouteTableId":{
+               "Ref":"IGRouteTable"
+
+}
+
+}
+
+},
+      "IGRouteTableAssociation03":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet03"
+
+},
+            "RouteTableId":{
+               "Ref":"IGRouteTable"
+
+}
+
+}
+
+},
+      "NATRouteTableAssociation04":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet04"
+
+},
+            "RouteTableId":{
+               "Ref":"NATRouteTable"
+
+}
+
+}
+
+},
+      "NATRouteTableAssociation05":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet05"
+
+},
+            "RouteTableId":{
+               "Ref":"NATRouteTable"
+
+}
+
+}
+
+},
+      "NATRouteTableAssociation06":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet06"
+
+},
+            "RouteTableId":{
+               "Ref":"NATRouteTable"
+
+}
+
+}
+
+},
+      "PRVRouteTableAssociation07":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet07"
+
+},
+            "RouteTableId":{
+               "Ref":"PRVRouteTable"
+
+}
+
+}
+
+},
+      "PRVRouteTableAssociation08":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet08"
+
+},
+            "RouteTableId":{
+               "Ref":"PRVRouteTable"
+
+}
+
+}
+
+},
+      "PRVRouteTableAssociation09":{
+         "Type":"AWS::EC2::SubnetRouteTableAssociation",
+         "Properties":{
+            "SubnetId":{
+               "Ref":"Subnet09"
+
+},
+            "RouteTableId":{
+               "Ref":"PRVRouteTable"
+
+}
+
+}
+
+},
+      "WEBSG":{
+         "Type":"AWS::EC2::SecurityGroup",
+         "DependsOn":"VPCCFIaaC",
+         "Properties":{
+            "GroupDescription":"Allow-HTTP-and-SSH",
+            "VpcId":{
+               "Ref":"VPCCFIaaC"
+
+},
+            "SecurityGroupIngress":[
+               {
+                  "IpProtocol":"tcp",
+                  "FromPort":80,
+                  "ToPort":80,
+                  "SourceSecurityGroupId":{
+                     "Fn::GetAtt":[
+                        "DefaultSecGRP",
+                        "GroupId"
+
+]
+
+}
+
+},
+               {
+                  "IpProtocol":"tcp",
+                  "FromPort":22,
+                  "ToPort":22,
+                  "SourceSecurityGroupId":{
+                     "Fn::GetAtt":[
+                        "DefaultSecGRP",
+                        "GroupId"
+
+]
+
+}
+
+},
+
+
+{
+   "IpProtocol":"tcp",
+   "FromPort":22,
+   "ToPort":22,
+"CidrIp" : "172.5.0.0/24",
+
+}
+
+]
+
+}
+
+},
+      "Webserver":{
+         "Type":"AWS::EC2::Instance",
+         "Properties":{
+            "ImageId":"ami-044826e1fc5840ca6",
+            "SecurityGroupIds":[
+               {"Ref":"WEBSG"}
+
+],
+            "InstanceType":"t2.micro",
+            "KeyName":{
+               "Ref":"KeyName"
+
+},
+            "SubnetId":{
+               "Ref":"Subnet04"
+
+}
+
+}
+
+},
+      "TargetGroupEC2":{
+         "Type":"AWS::ElasticLoadBalancingV2::TargetGroup",
+         "DependsOn": "Webserver",
+         "Properties":{
+            "HealthCheckEnabled":"True",
+            "HealthCheckIntervalSeconds":10,
+            "HealthCheckPath":"/",
+            "HealthCheckPort":"80",
+            "HealthCheckProtocol":"HTTP",
+            "Name":"TG-EC2",
+            "Port":80,
+            "Protocol":"HTTP",
+            "Targets":[{"Id":{"Ref": "Webserver"}}],
+            "TargetType":"instance",
+            "UnhealthyThresholdCount":3,
+            "VpcId":{
+               "Ref":"VPCCFIaaC"}
+             }
+
+},
+
+
+"ALBSEC":{
+   "Type":"AWS::ElasticLoadBalancingV2::LoadBalancer",
+   "Properties":{
+      "IpAddressType":"ipv4",
+      "Name":"ALBSEC",
+      "Scheme":"internet-facing",
+      "Subnets":[{"Ref":"Subnet01"},{"Ref":"Subnet02"}],
+      "SecurityGroups":[{"Ref": "DefaultSecGRP"}],
+      "Type":"application"
+
+}
+},
+
+"ALBListener":{
+   "Type":"AWS::ElasticLoadBalancingV2::Listener",
+   "Properties":{
+      "DefaultActions":[
+         {
+            "Type":"forward",
+            "TargetGroupArn":{
+               "Ref":"TargetGroupEC2"
+
+}
+
+}
+
+],
+      "LoadBalancerArn":{"Ref":"ALBSEC"},
+      "Port":80,
+      "Protocol":"HTTP"
+
+}
+
+},
+
+
+"DBSubnetGroup": {
+  "Type": "AWS::RDS::DBSubnetGroup",
+  "Properties": {
+    "DBSubnetGroupDescription": "HA Subnet Group",
+    "SubnetIds": [
+      {
+        "Ref": "Subnet06"
+      },
+      {
+        "Ref": "Subnet07"
+      }
+    ],
+    "Tags": [
+      {
+        "Key": "Name",
+        "Value": "techshift-db-group"
+      }
+    ]
+  }
+},
+
+
+"DBSG": {
+  "Type": "AWS::EC2::SecurityGroup",
+  "DependsOn": "VPCCFIaaC",
+  "Properties": {
+    "GroupDescription": "Allow-HTTP-and-SSH",
+    "VpcId": {
+      "Ref": "VPCCFIaaC"
+    },
+    "SecurityGroupIngress": [
+      {
+        "IpProtocol": "tcp",
+        "FromPort": 3306,
+        "ToPort": 3306,
+        "SourceSecurityGroupId": {
+          "Fn::GetAtt": [
+            "WEBSG",
+            "GroupId"
+          ]
+        }
+      },
+      {
+         "IpProtocol":"tcp",
+         "FromPort":3306,
+         "ToPort":3306,
+      "CidrIp" : "172.5.0.0/24",
+
+}
+
+
+    ]
+  }
+},
+
+
+
+
+"RDSCluster": {
+  "Type": "AWS::RDS::DBCluster",
+  "Properties": {
+    "MasterUsername": {
+      "Ref": "RDSUsername"
+    },
+    "MasterUserPassword": {
+      "Ref": "RDSPassword"
+    },
+    "Engine": "aurora",
+    "DBSubnetGroupName": {
+      "Ref": "DBSubnetGroup"
+    },
+    "VpcSecurityGroupIds": [
+      {
+        "Ref": "DBSG"
+      }
+    ],
+    "DBClusterParameterGroupName": {
+      "Ref": "RDSDBClusterParameterGroup"
+    }
+  }
+},
+"RDSDBInstance1": {
+  "Type": "AWS::RDS::DBInstance",
+  "Properties": {
+    "DBSubnetGroupName": {
+      "Ref": "DBSubnetGroup"
+    },
+    "DBParameterGroupName": {
+      "Ref": "RDSDBParameterGroup"
+    },
+    "Engine": "aurora",
+    "DBClusterIdentifier": {
+      "Ref": "RDSCluster"
+    },
+    "PubliclyAccessible": "false",
+    "AvailabilityZone": {
+      "Fn::GetAtt": [
+        "Subnet06",
+        "AvailabilityZone"
+      ]
+    },
+    "DBInstanceClass": "db.r4.large"
+  }
+},
+"RDSDBInstance2": {
+  "Type": "AWS::RDS::DBInstance",
+  "Properties": {
+    "DBSubnetGroupName": {
+      "Ref": "DBSubnetGroup"
+    },
+    "DBParameterGroupName": {
+      "Ref": "RDSDBParameterGroup"
+    },
+    "Engine": "aurora",
+    "DBClusterIdentifier": {
+      "Ref": "RDSCluster"
+    },
+    "PubliclyAccessible": "false",
+    "AvailabilityZone": {
+      "Fn::GetAtt": [
+        "Subnet07",
+        "AvailabilityZone"
+      ]
+    },
+    "DBInstanceClass": "db.r4.large"
+  }
+},
+"RDSDBClusterParameterGroup": {
+  "Type": "AWS::RDS::DBClusterParameterGroup",
+  "Properties": {
+    "Description": "CloudFormation Sample Aurora Cluster Parameter Group",
+    "Family": "aurora5.6",
+    "Parameters": {
+      "time_zone": "US/Eastern"
+    }
+  }
+},
+"RDSDBParameterGroup": {
+  "Type": "AWS::RDS::DBParameterGroup",
+  "Properties": {
+    "Description": "CloudFormation Sample Aurora Parameter Group",
+    "Family": "aurora5.6",
+    "Parameters": {
+      "sql_mode": "IGNORE_SPACE"
+    }
+  }
+},
+
+
+"Cloud9Security":{
+  "Type" : "AWS::Cloud9::EnvironmentEC2",
+  "Properties" : {
+      "AutomaticStopTimeMinutes" : 40,
+      "Description" : "Security Workshop",
+      "InstanceType" : "t2.micro",
+      "Name" : "Security-Workshop",
+      "SubnetId" : {"Ref":"Subnet01"}
+      }
+}
+
+
+
+},
+
+"Outputs":{
+  "WebsiteURL": {
+    "Value": {
+      "Fn::Join": [
+        "",
+        [
+          "http://",
+          {
+            "Fn::GetAtt": [
+              "ALBSEC",
+              "DNSName"
+            ]
+          },
+          "/"
+        ]
+      ]
+    },
+    "Description": "Unicorn Adoption site"
+  },
+"EC2InstanceIP":{
+"Description": "SSH to this IP from Cloud9 to continue installation and labs",
+"Value": { "Fn::GetAtt" : [ "Webserver", "PrivateIp" ] }
+
+},
+
+"DBEndpoint":{
+"Description": "DB Endpoint",
+"Value":{ "Fn::GetAtt": [ "RDSCluster", "Endpoint.Address" ]}
+
+}
+
+}
+}
