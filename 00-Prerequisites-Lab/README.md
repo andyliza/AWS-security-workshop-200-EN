@@ -21,6 +21,28 @@ connection.
 
 ![images](images/7324683f50d7dbe301fa0c476d84153a.png)
 
+### Deploy the CloudFormation template for the sample application "Unicorn Adoption Site"
+
+1) Dowload the cloudformation template from <a id="raw-url" href="https://raw.githubusercontent.com/andyliza/AWS-security-workshop-200-EN/master/CloudFormation/securityworkshop.template">this link</a>.
+
+Just simply right click on the ling and  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Create a Cloud9 environment
 
 1) Go to the Cloud9 console and press *Create environment*.
