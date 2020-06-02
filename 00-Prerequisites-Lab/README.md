@@ -23,20 +23,17 @@ connection.
 
 ### Deploy the CloudFormation template for the sample application "Unicorn Adoption Site"
 
-1) Download the cloudformation template from <a id="raw-url" href="https://raw.githubusercontent.com/andyliza/AWS-security-workshop-200-EN/master/CloudFormation/securityworkshop.template">this link</a>.
+1) Download the cloudformation template from <a id="raw-url" href="https://raw.githubusercontent.com/andyliza/AWS-security-workshop-200-EN/master/CloudFormation/securityworkshop.template">this link</a>. Just simply right click on the link and select *Save Link As*. Store the file on your computer as we will need it in the next steps.
 
-Just simply right click on the link and select *Save Link As*. Store the file on your computer as we will need it in the next steps.
+![images](images/rightclick.png)
 
-
-
-2)Now go to the AWS Console and in the search bar type CloudFormation and press Enter. Make sure that you have any previous AWS sessions closed.
-
+2) Now go to the AWS Console and in the search bar type CloudFormation and press Enter. Make sure that you have any previous AWS sessions closed. Click on __Create Stack__
 
 ![images](images/cloudformation-upload.png)
 
+3) Make sure that __Template is ready__ and __Upload a template file__ options are selected. Click on **Choose file** and upload the template that you downloaded in step 1) of this section.
 
-
-
+![images](images/cloudformation-upload-2.png)
 
 
 
