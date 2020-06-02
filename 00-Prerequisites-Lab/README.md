@@ -13,7 +13,7 @@ connection.
 
 ![images](images/d3c32b52f680b2710b9bb1a93c1407c1.png)
 
-3)  Key in *techshift-keypair* in the name box.
+3)  Key in *sec-keypair* in the name box.
 
 ![images](images/c4490616d6988656078799a2695d6b01.png)
 
@@ -31,12 +31,21 @@ connection.
 
 ![images](images/cloudformation-upload.png)
 
-3) Make sure that __Template is ready__ and __Upload a template file__ options are selected. Click on **Choose file** and upload the template that you downloaded in step 1) of this section.
+3) Make sure that __Template is ready__ and __Upload a template file__ options are selected. Click on **Choose file** and upload the template that you downloaded in step **1)** of this section and click **Next**
 
 ![images](images/cloudformation-upload-2.png)
 
+4) In the the form add a **Stack Name**, select the newly created __key__. The VPC CIDR, RDS Password and Username are already prepopulated for you. Once everything is filled in press **Next**
 
+![images](images/cloudformation-upload-3.png)
 
+5) In the next screen scroll to the bottom of the page and press **Next**.
+
+![images](images/cloudformation-upload-4.png)
+
+6) In the summary page click on **Create Stack**.
+
+![images](images/cloudformation-upload-5.png)
 
 
 
