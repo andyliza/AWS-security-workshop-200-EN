@@ -47,9 +47,27 @@ connection.
 
 ![images](images/cloudformation-upload-5.png)
 
+7) Once the stack is deployed successfully click on the **Output** tab and take note the values listed there. You can copy them into a scratch pad.
 
+![images](images/cloudformation-upload-6.png)
 
+8) Go to the Cloud9 console and open the environment created by CloudFormation.
 
+![images](images/cloud9.png)
+
+9) In the Cloud9 environment drag and drop the Key Pair created at the beginning of this prerequisites lab and save it.
+
+![images](images/cloud9keypair.png)
+
+10) In the command prompt key in the following command:
+
+```
+chmod 400 [the name of your keypair]
+
+ssh -i "[the name of your keypair]" ubuntu@[IP address of the webserver - can be found in the Cloudformation Output]
+
+```
+**:heavy_exclamation_mark: Replace the keypair name and IP address values with the ones that you use in the previous steps**
 
 
 
