@@ -69,70 +69,52 @@ ssh -i "[the name of your keypair]" ubuntu@[IP address of the webserver - can be
 ```
 **:heavy_exclamation_mark: Replace the keypair name and IP address values with the ones that you use in the previous steps**
 
+![images/](images/connecttoec2.png)
 
-
-### Create a Cloud9 environment
-
-1) Go to the Cloud9 console and press *Create environment*.
-
-![prerequisites lab](images//1d057a6d465f25b6ff1842ee465ab08d.png)
-
-2) Provide a name for your environment - you can name it ___SecurityImmersionDay___
-
-![images/](images/cloud9-environment-name.png)
-
-3) Leave all the parameters untouched and press *Next Steps*.
-
-
-![images/](images/bd9d46e5b0a0c7f7e0e405566a2a4806.png)
-
-
-4) Review the settings and press *Create environment*.
-
-
-![images/](images/09e18a38e2942abbedcfae852c057fb3.png)
-
-
-5) Now you have an IDE in the cloud.
-
-![images/](images/6bf8fc54f1f01e9eda93a8dc95f5dccd1.png)
-
-6) Click on *Open IDE*
-
-7)In the Terminal type the following commands
+11) Once you are connected key in and execute the following commands:
 
 ```
-git clone https://github.com/andyliza/aws-security-workshop.git
+cd /var/www/unicorn-app/SQLScripts/
+
+mysql -h [The RDS endpoint given in the Cloudformation output ] -u admin -p < setup.sql
 
 ```
-![images/](images/clone.png)
+Once prompted for the Aurora MySQL server password, key in "securityworkshop" and wait for 7 seconds for the setup to completed.
 
-8) Once the repository is cloned, please depoloy the CloudFormation template using the following command:
+![images/](images/sqlsetup.png)
 
-**:heavy_exclamation_mark: All parameters are case sensitive**
-
-```
-aws cloudformation create-stack --template-body file://./aws-security-workshop/Cloudformation/security-workshop.json --stack-name securitychallenge2020 --capabilities CAPABILITY_NAMED_IAM --parameters ParameterKey=InstanceType,ParameterValue=t2.small ParameterKey=KeyName,ParameterValue=techshift-keypair ParameterKey=RDSPassword,ParameterValue=techshift2019 ParameterKey=RDSUsername,ParameterValue=admin ParameterKey=VPCCIDR,ParameterValue=172.4.0.0/16
+12) Once the setup is complete and no error is edit the __param.yaml__ located in /var/www/unicorn-app and add the RDS endpoint displayed in the Outputs of Cloudformation
 
 ```
-![images/](AWSCloud9-Cloudformation.png)
-
-9) Once the installation begins you can check the status of the deployement using this command:
-
-**:heavy_exclamation_mark: All parameters are case sensitive**
+sudo nano /var/www/unicorn-app/param.yaml
 
 ```
-aws cloudformation describe-stacks --stack-name securitychallenge2020 \
-                                   --query 'Stacks[0].StackStatus' \
-                                   --output text
+
+![images/](images/param.png)
+
+13) Press CTRL+X and 'Y' to Save the parameters
+
+14) For the changes to take effect we need to restart the nginx and gunicorn3 services:
+
+```
+sudo systemctl restart gunicorn3
+sudo systemctl restart nginx
+
 ```
 
-![images/](images/statuscheck.png)
+15) Once the services are started in the Outputs of the CloudFormation template you will see the URL of our webapp.
 
- **:heavy_exclamation_mark: DO NOT move past this point until you see CREATE_COMPLETE as the status for your CloudFormation stack**
+![images](images/cloudformation-upload-6.png)
 
-Once the template is deployed the following architecture will be present in your account
+16) Click on it and test if you can add a unicorn.
 
-![images/](images/secimmersionday.png)
+![images](images/addunicorn.png)
 
-10) When you see that the operation has been completed successfully move to the [first lab (CloudTrail)](../01-CloudTrail-Lab/README.md)
+17) If everything is successful you will see the unicorn in the listed
+
+![images](images/list.png)
+
+18) Feel Free to add more unicorns in the list :)
+
+
+When you see that the operation has been completed successfully move to the [first lab (CloudTrail)](../01-CloudTrail-Lab/README.md)
