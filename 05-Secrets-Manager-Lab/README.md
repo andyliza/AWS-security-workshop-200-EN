@@ -1,4 +1,4 @@
-# LAB 5 - AWS Secrets Manager 
+# LAB 5 - AWS Secrets Manager
 #### To create and store your secret
 
 1) Sign in to the AWS Secrets Manager console
@@ -95,4 +95,61 @@ The output will look like this:
     "ARN": "arn:aws:secretsmanager:ap-southeast-1:695242525854:secret:techshift/demo/aurora-TnOtO6"
 }
 ```
+
+
+
+#### To use the secret from Secrets Manager in your code
+
+1) Go to the Cloud9 console and open the environment created by CloudFormation.
+
+![images](images/cloud9.png)
+
+2) In the Cloud9 environment drag and drop the Key Pair created at the beginning of this prerequisites lab and save it.
+
+![images](images/cloud9keypair.png)
+
+3) In the command prompt key in the following command:
+
+```
+chmod 400 [the name of your keypair]
+
+ssh -i "[the name of your keypair]" ubuntu@[IP address of the  - can be found in the Cloudformation Output]
+
+```
+**:heavy_exclamation_mark: Replace the keypair name and IP address values with the ones that you use in the previous steps**
+
+![images/](images/connecttoec2.png)
+
+4) Once you are connected to the instances go to the **/var/www/unicorn-app**
+
+```
+cd /var/www/unicorn-appear
+
+```
+and open up **app.py**
+
+```
+sudo nano app.py
+
+```
+5) In the file you will notice that there are some commented lines using #. Go ahead and uncomment them as instructed in the file and comment the following two lines:
+
+```
+#param=yaml.load(open('param.yaml'))
+
+```
+and
+
+```
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://'+param['mysql_user']+':'+param['mysql_password']+'@'+param['mysql_host']+'/'+param['mysql_db']
+
+```
+See a sample here
+
+![images/](images/codemodif.png)
+
+
+
+
+
 Proceed to the [next lab (WAF Lab)](../06-WAF-Lab/README.md)
