@@ -36,67 +36,13 @@
 
 2) In the **Secret value** section, choose **Retrieve secret value**.
 
-3) You can view your secret as either key-value pairs, or as a JSON text
-    structure.
+![iamges](images/retrieve.png)
 
-#### To retrieve your secret in the AWS Secrets Manager from CLI
+4) Once you can see the values of the secret click on **Edit** and add a new key-pair for the database called __dbname__ and the value __unicorn__.
 
-1) Go to your Cloud9 Console created in the previous labs.
+![iamges](images/edit.png)
 
-![iamges](images/aac310e46025be2783c389fae31b32b3.png)
-
-2)  In the console type the following commands:
-
-```
-   aws secretsmanager describe-secret --secret-id techshift/demo/aurora
-```
-
-The output will look like this:
-
-```
-{
-    "RotationRules": {
-        "AutomaticallyAfterDays": 30
-    },
-    "Name": "techshift/demo/aurora",
-    "VersionIdsToStages": {
-        "44702597-7be7-4da8-b013-8124020caefe": [
-            "AWSCURRENT"
-        ],
-        "38a914cb-4015-4e1a-ad48-d0483690823c": [
-            "AWSPENDING"
-        ]
-    },
-    "Tags": [],
-    "RotationEnabled": true,
-    "LastChangedDate": 1574181498.181,
-    "KmsKeyId": "arn:aws:kms:ap-southeast-1:695242525854:key/dc1eda08-9f36-4855-b047-2d2a8994e204",
-    "RotationLambdaARN": "arn:aws:lambda:ap-southeast-1:695242525854:function:SecretsManageraurora-secret-rotation-lambda",
-    "ARN": "arn:aws:secretsmanager:ap-southeast-1:695242525854:secret:techshift/demo/aurora-TnOtO6",
-    "Description": "password for the aurora db"
-}
-```
-...and the command:
-
-```
-   aws secretsmanager get-secret-value --secret-id techshift/demo/aurora --version-stage AWSCURRENT
-```
-The output will look like this:
-
-```
-{
-    "Name": "techshift/demo/aurora",
-    "VersionId": "44702597-7be7-4da8-b013-8124020caefe",
-    "SecretString": "{\"username\":\"admin\",\"password\":\"techshift2019\",\"engine\":\"mysql\",\"host\":\"techshift-db.cluster-cwkpkosksmzj.ap-southeast-1.rds.amazonaws.com\",\"port\":3306,\"dbClusterIdentifier\":\"techshift-db\"}",
-    "VersionStages": [
-        "AWSCURRENT"
-    ],
-    "CreatedDate": 1574180923.067,
-    "ARN": "arn:aws:secretsmanager:ap-southeast-1:695242525854:secret:techshift/demo/aurora-TnOtO6"
-}
-```
-
-
+5) Once you are done click **Save**.
 
 #### To use the secret from Secrets Manager in your code
 
