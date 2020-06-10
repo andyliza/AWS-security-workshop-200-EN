@@ -38,9 +38,13 @@
 
 ![iamges](images/retrieve.png)
 
-4) Once you can see the values of the secret click on **Edit** and add a new key-pair for the database called __dbname__ and the value __unicorn__.
+4) Once you can see the values of the secret click on **Edit**
 
 ![iamges](images/edit.png)
+
+5) Add a new key-pair for the database called __dbname__ and the value __unicorn__ and click **Add**.
+
+![iamges](images/add.png)
 
 5) Once you are done click **Save**.
 
