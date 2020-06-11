@@ -50,9 +50,6 @@ And then click on **Create role**
 
 ![images](images/checkrole.png)
 
-
-
-
 #### To create and store your secret
 
 1) Sign in to the AWS Secrets Manager console
@@ -139,7 +136,7 @@ sudo nano app.py
 5) In the file you will notice that there are some commented lines using #. Go ahead and uncomment them as instructed in the file and comment the following two lines:
 
 ```
-#param=yaml.load(open('param.yaml'))
+param=yaml.load(open('param.yaml'))
 
 ```
 and
