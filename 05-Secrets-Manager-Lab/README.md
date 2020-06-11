@@ -1,4 +1,58 @@
 # LAB 5 - AWS Secrets Manager
+#### Creating a Role for your EC2 instance
+In order to use Secrets Manager and for our instance to be able to access other the secret we will need to create a EC2 IAM role for our instance.
+
+So lets proceed to the IAM console and create the role. Use the search bar and type "IAM"
+
+1) Once you are on the  IAM page on the left hand side of the console click on SubnetRouteTableAssociation
+
+![images](images/roles.png)
+
+And then click on **Create role**
+
+![images](images/createrole.png)
+
+2) In the subsequent screen select EC2 because our EC2 instance will need to access the Secrets Manager service and click on **Next: Permissions**
+
+![images](images/createec2role.png)
+
+3) In the __Permissions__ section search for Secrets Manager and add the **SecretsManagerReadWrite** policy and then click on **Next: Tags**
+
+![images](images/permissions.png)
+
+4) Add a Tag if you want and then click on **Next: Review***
+
+![images](images/tags.png)
+
+5) Review the settings and give the role a name **EC2SecretsManager**. Click on __Create role__
+
+![images](images/createrolefinal.png)
+
+6) If everything is successful you should see a green banner in the IAM Console
+
+![images](images/success.png)
+
+7) Now it is time to attach the role to our EC2 instance. So please go to the EC2 console. Use the search bar if you don't know where to find the service.
+
+8) Go to your instance list and select your instance and click on **Actions -> Instance Settings -> Attach/Replace IAM Role**
+
+![images](images/selectec2.png)
+
+9) Search for the role we created previously **EC2SecretsManager** select it and click __Apply__
+
+![images](images/applyrole.png)
+
+10)Once the role is successfully applied you will see a green banner
+
+![images](images/success.png)
+
+11) You can check if the role was applied in the EC2 console by selecting the instance in the EC2 console and verifying the section __IAM role__ in the details panel.
+
+![images](images/checkrole.png)
+
+
+
+
 #### To create and store your secret
 
 1) Sign in to the AWS Secrets Manager console
@@ -11,21 +65,21 @@
    the security created in the previous lab called techshiftkey2019* and select
    the database created in the previous lab.
 
-![iamges](images/62ee37a962c8d96713af8b33f510fe6d.png)
+![images](images/62ee37a962c8d96713af8b33f510fe6d.png)
 
 4)  Give the *Secret* a name – *techshift/demo/aurora*. Add a description and
     press *Next*.
 
-![iamges](images/8625b77cdb1bb9b3ac03fb8c97b92836.png)
+![images](images/8625b77cdb1bb9b3ac03fb8c97b92836.png)
 
 5)  Enable automatic rotation for 30 days using a Lambda function and name it
     *aurora-secret-rotation-lambda* and press *Next*.
 
-![iamges](images/6b319d5df7d49e8c19e7b662969e2954.png)
+![images](images/6b319d5df7d49e8c19e7b662969e2954.png)
 
 6)  In the review page press *Store*.
 
-![iamges](images/5394a066ef14f52afd154cf9e8bdf262.png)
+![images](images/5394a066ef14f52afd154cf9e8bdf262.png)
 
 #### To retrieve your secret in the AWS Secrets Manager console
 
@@ -36,17 +90,17 @@
 
 2) In the **Secret value** section, choose **Retrieve secret value**.
 
-![iamges](images/retrieve.png)
+![images](images/retrieve.png)
 
 4) Once you can see the values of the secret click on **Edit**
 
-![iamges](images/edit.png)
+![images](images/edit.png)
 
 5) Add a new key-pair for the database called __dbname__ and the value __unicorn__ and click **Add**.
 
-![iamges](images/add.png)
+![images](images/add.png)
 
-5) Once you are done click **Save**.
+6) Once you are done click **Save**.
 
 #### To use the secret from Secrets Manager in your code
 
@@ -98,8 +152,18 @@ See a sample here
 
 ![images/](images/codemodif.png)
 
+6) Save the file by pressing CTRL+S and exit using CTRL+X.
+
+7) After saving the file execute the following two commands. If no error message is received the change has been successful.
 
 
+```
+sudo systemctl restart gunicorn3
+sudo systemctl restart nginx
+
+```
+
+8) Try the Application by adding or removing a unicorn.
 
 
 Proceed to the [next lab (WAF Lab)](../06-WAF-Lab/README.md)
