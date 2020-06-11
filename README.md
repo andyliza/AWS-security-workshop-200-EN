@@ -41,4 +41,4 @@ You will see the AWS Console opening up
 
 ![images](images/eeawsconsole.png)
 
-Let's go the [prerequisites lab](../00-Prerequisites-Lab/README.md)
+Let's go the [prerequisites lab](00-Prerequisites-Lab/README.md)
