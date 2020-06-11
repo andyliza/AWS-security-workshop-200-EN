@@ -83,7 +83,7 @@ Once prompted for the Aurora MySQL server password, key in "securityworkshop" an
 
 ![images/](images/sqlsetup.png)
 
-12) Once the setup is complete and no error is edit the __param.yaml__ located in /var/www/unicorn-app and add the RDS endpoint displayed in the Outputs of Cloudformation
+12) Once the setup is complete and no error is prompted, edit the __param.yaml__ located in /var/www/unicorn-app and add the RDS endpoint displayed in the Outputs of Cloudformation
 
 ```
 sudo nano /var/www/unicorn-app/param.yaml
@@ -114,7 +114,7 @@ sudo systemctl restart nginx
 
 ![images](images/list.png)
 
-18) Feel Free to add more unicorns in the list :)
+18) Feel Free to add more unicorns in the list :) so we can play later.
 
 
 When you see that the operation has been completed successfully move to the [first lab (CloudTrail)](../01-CloudTrail-Lab/README.md)

@@ -40,3 +40,5 @@ After that click on __Open Cosole__
 You will see the AWS Console opening up
 
 ![images](images/eeawsconsole.png)
+
+Let's go the [prerequisites lab](../00-Prerequisites-Lab/README.md)

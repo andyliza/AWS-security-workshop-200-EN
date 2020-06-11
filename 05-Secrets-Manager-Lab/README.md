@@ -160,7 +160,7 @@ sudo systemctl restart nginx
 
 ```
 
-8) Try the Application by adding or removing a unicorn.
+8) Try the Application by adding and/or removing a unicorn, or just simply list the unicorns that you added in the pre-requisites lab
 
 
 Proceed to the [next lab (WAF Lab)](../06-WAF-Lab/README.md)
