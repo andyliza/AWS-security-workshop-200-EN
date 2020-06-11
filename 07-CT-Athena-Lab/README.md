@@ -5,7 +5,7 @@
  **:heavy_exclamation_mark: Make sure you use your replace the bucket name in the command below with a unique name.**
 
 ```
-aws s3api create-bucket --bucket [yourname-bkksecurity] --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1
+aws s3api create-bucket --bucket [yourname-securityworkshop] --region ap-southeast-1 --create-bucket-configuration LocationConstraint=ap-southeast-1
 ```
 ![images](images/s3bucket.png)
 
