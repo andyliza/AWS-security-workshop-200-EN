@@ -28,7 +28,7 @@ And paste the DNS name in a new tab.
 
 ![images](images/0-2-IP-set.png)
 
-4) Once the IP set is successfully created we will see it in the list
+4) Once the IP set is successfully created we will see it in the list. Users might need to select **Asia Pacific (Singapore)** from the drop down menu.
 
 ![images](images/0-3-success-ip-list.png)
 
