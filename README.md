@@ -33,7 +33,7 @@ Set up your team name if you wish. To access te console click on __AWS Console__
 
 ![images](images/eeconsole.png)
 
-After that click on __Open Cosole__
+After that click on __Open Console__
 
 ![images](images/eeopenconsole.png)
 

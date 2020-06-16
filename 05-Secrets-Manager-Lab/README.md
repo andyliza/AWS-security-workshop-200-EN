@@ -4,7 +4,7 @@ In order to use Secrets Manager and for our instance to be able to access other 
 
 So lets proceed to the IAM console and create the role. Use the search bar and type "IAM"
 
-1) Once you are on the  IAM page on the left hand side of the console click on SubnetRouteTableAssociation
+1) Once you are on the  IAM page on the left hand side of the console click on Roles
 
 ![images](images/roles.png)
 
@@ -57,7 +57,7 @@ And then click on **Create role**
 2) On either the service introduction page or the secrets list page,
     choose **Store a new secret**.
 
-3) On the **Store a new secret** page, choose **Credentials for Database**, in
+3) On the **Store a new secret** page, choose **Credentials for RDS Database**, in
    the username type *admin and in the password box type techshift2019. Choose
    the security created in the previous lab called techshiftkey2019* and select
    the database created in the previous lab.
@@ -93,7 +93,7 @@ And then click on **Create role**
 
 ![images](images/edit.png)
 
-5) Add a new key-pair for the database called __dbname__ and the value __unicorn__ and click **Add**.
+5) Click on **Add Row** and add a new key-pair for the database called __dbname__ and the value __unicorn__ and click **Add**.
 
 ![images](images/add.png)
 
@@ -105,7 +105,7 @@ And then click on **Create role**
 
 ![images](images/cloud9.png)
 
-2) In the Cloud9 environment drag and drop the Key Pair created at the beginning of this prerequisites lab and save it.
+2) In the Cloud9 environment drag and drop the Key Pair created at the beginning of this prerequisites lab and save it. If you have done this during the pre-requisites labs then there is no need to do it again.
 
 ![images](images/cloud9keypair.png)
 

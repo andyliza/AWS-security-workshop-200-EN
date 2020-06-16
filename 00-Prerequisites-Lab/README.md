@@ -43,7 +43,7 @@ connection.
 
 ![images](images/cloudformation-upload-4.png)
 
-6) In the summary page click on **Create Stack**.
+6) In the summary page click on **Create Stack**. The stack creation will take 12-15 minutes.
 
 ![images](images/cloudformation-upload-5.png)
 

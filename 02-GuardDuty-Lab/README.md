@@ -10,7 +10,7 @@
 
 ![images](images/e5882947fb2df261ec73f29c8bcb1395.png)
 
-4)  GuarDuty is enabled on the account.
+4)  GuardDuty is enabled on the account in the Singapore region. GuardDuty should be enabled on all regions and as a best practice we recommend you to do it in all your accounts. The lab just ilustrates how to do it in one region.
 
 ![images](images/11e91f206aca99a464ef8dbd95477cdb.png)
 

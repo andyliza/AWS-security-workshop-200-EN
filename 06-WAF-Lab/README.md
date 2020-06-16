@@ -37,12 +37,12 @@ And paste the DNS name in a new tab.
 
 ![images](images/2-Create-Web-ACL.png)
 
-6)  Fill in the Web ACL name, description, **the region**, CloudWatch Metric name  and click *Add AWS Resources*.
+6)  Fill in the Web ACL name, description, **the region** (ap-southeast-1), CloudWatch Metric name  and click *Add AWS Resources*.
     once done.
 
 ![images](images/3-Name-the-Rule-Add-resource.png)
 
-7) Select the Application Load Balancer created in the previous Lab. This might be named *techshift-alb* or other name that you might have used.
+7) Select the Application Load Balancer created by the Cloudformation template
 
 ![images](images/3-1-add-alb.png)
 
