@@ -124,7 +124,7 @@ ssh -i "[the name of your keypair]" ubuntu@[IP address of the  - can be found in
 4) Once you are connected to the instances go to the **/var/www/unicorn-app**
 
 ```
-cd /var/www/unicorn-appear
+cd /var/www/unicorn-app
 
 ```
 and open up **app.py**
