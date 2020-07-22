@@ -35,7 +35,7 @@ connection.
 
 ![images](images/cloudformation-upload-2.png)
 
-4) In the the form add a **Stack Name**, select the newly created __key__. The VPC CIDR, RDS Password and Username are already prepopulated for you. Once everything is filled in press **Next**
+4) In the the form add a **Stack Name**, select the newly created __key__. The VPC CIDR, RDS Password and Username are already pre-populated for you. Once everything is filled in press **Next**
 
 ![images](images/cloudformation-upload-3.png)
 
@@ -43,11 +43,11 @@ connection.
 
 ![images](images/cloudformation-upload-4.png)
 
-6) In the summary page click on **Create Stack**. The stack creation will take 12-15 minutes.
+6) In the summary page click on **Create Stack**. The stack creation will take 10-15 minutes.
 
 ![images](images/cloudformation-upload-5.png)
 
-**:heavy_exclamation_mark: It will take around 10-15 minutes to have the entire template deployed**
+**:heavy_exclamation_mark: It will take around 10-15 minutes to have the entire template deployed so please be patient**
 
 7) Once the stack is deployed successfully click on the **Output** tab and take note the values listed there. You can copy them into a scratch pad.
 
