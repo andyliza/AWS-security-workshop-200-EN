@@ -20,7 +20,7 @@ Create CloudTrail
 
 5) Once everything is completed you will see the Trail created in the console.
 
-![images](images/console)
+![images](images/console.png)
 
 In the following labs we will do an analysis on this trail using AWS Athena.
 
