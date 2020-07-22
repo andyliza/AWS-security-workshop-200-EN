@@ -24,7 +24,7 @@
 
 ![images](images/a6966fb42a24a42322f3a8f6b6fcef18.png)
 
-5).  Review the configuration page and click *Confirm*.
+5)  Review the configuration page and click *Confirm*.
 
 ![images](images/de37869ace958028cfeabed59551966a.png)
 

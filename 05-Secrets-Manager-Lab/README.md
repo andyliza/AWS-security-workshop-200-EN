@@ -99,7 +99,7 @@ And then click on **Create role**
 
 6) Once you are done click **Save**.
 
-7) Now we need to allow our role to use they KMS key to decrypt our secrets. To accomplish this we need to go to KMS click on our key **security-wrokshop-key** and add the EC2role created at the beginning of this lab in the __Key users__ section
+7) Now we need to allow our role to use the KMS key to decrypt our secrets. To accomplish this we need to go to the KMS console click on our key **security-wrokshop-key** and add the EC2role created at the beginning of this lab in the __Key users__ section
 
 ![images](images/addec2role.png)
 
