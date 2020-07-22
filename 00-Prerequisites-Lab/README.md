@@ -47,6 +47,8 @@ connection.
 
 ![images](images/cloudformation-upload-5.png)
 
+**:heavy_exclamation_mark: It will take around 10-15 minutes to have the entire template deployed**
+
 7) Once the stack is deployed successfully click on the **Output** tab and take note the values listed there. You can copy them into a scratch pad.
 
 ![images](images/cloudformation-upload-6.png)
