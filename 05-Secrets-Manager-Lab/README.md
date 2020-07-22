@@ -58,13 +58,13 @@ And then click on **Create role**
     choose **Store a new secret**.
 
 3) On the **Store a new secret** page, choose **Credentials for RDS Database**, in
-   the username type *admin and in the password box type techshift2019. Choose
-   the security created in the previous lab called techshiftkey2019* and select
+   the username type *admin and in the password box type securityworkshop. Choose
+   the encryption key created in the previous lab called  security-workshop-key* and select
    the database created in the previous lab.
 
 ![images](images/62ee37a962c8d96713af8b33f510fe6d.png)
 
-4)  Give the *Secret* a name – *techshift/demo/aurora*. Add a description and
+4)  Give the *Secret* a name – *securityworkshop/demo/aurora*. Add a description and
     press *Next*.
 
 ![images](images/8625b77cdb1bb9b3ac03fb8c97b92836.png)
@@ -99,21 +99,19 @@ And then click on **Create role**
 
 6) Once you are done click **Save**.
 
+7) Now we need to allow our role to use they KMS key to decrypt our secrets. To accomplish this we need to go to KMS click on our key **security-wrokshop-key** and add the EC2role created at the beginning of this lab in the __Key users__ section
+
+![images](images/addec2role.png)
+
 #### To use the secret from Secrets Manager in your code
 
 1) Go to the Cloud9 console and open the environment created by CloudFormation.
 
 ![images](images/cloud9.png)
 
-2) In the Cloud9 environment drag and drop the Key Pair created at the beginning of this prerequisites lab and save it. If you have done this during the pre-requisites labs then there is no need to do it again.
-
-![images](images/cloud9keypair.png)
-
-3) In the command prompt key in the following command:
+2) In the command prompt key in the following command:
 
 ```
-chmod 400 [the name of your keypair]
-
 ssh -i "[the name of your keypair]" ubuntu@[IP address of the  - can be found in the Cloudformation Output]
 
 ```
