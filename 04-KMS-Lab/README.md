@@ -53,6 +53,8 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 >   IAM policies can give other IAM users and roles permission to manage the
 >   CMK.
 
+![/images](images/keyadminperm.png)
+
 12.  Choose **Next**.
 
 13.  Select the IAM users and roles that can use the CMK for cryptographic
@@ -63,8 +65,6 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 >   The AWS account (root user) has full permissions by default. As a result,
 >   any IAM policies can also give users and roles permission use the CMK for
 >   cryptographic operations.
-
-![/images](images/keyadminperm.png)
 
 14.  (Optional) You can allow other AWS accounts to use this CMK for
     cryptographic operations. To do so, in the **Other AWS accounts** section at
