@@ -43,9 +43,9 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 >   managed CMK, [edit the CMK](https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html#editing-keys-console) in
 >   the AWS Management Console or use the *UpdateKeyDescription* operation.
 
-10.  Choose **Next**.
+8.  Choose **Next**.
 
-11.  Select the IAM users and roles that can administer the CMK. For the time
+9.  Select the IAM users and roles that can administer the CMK. For the time
     being we will not configure any other IAM users
 
 >   **Note**
@@ -55,9 +55,9 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 
 ![/images](images/keyadminperm.png)
 
-12.  Choose **Next**.
+10.  Choose **Next**.
 
-13.  Select the IAM users and roles that can use the CMK for cryptographic
+11.  Select the IAM users and roles that can use the CMK for cryptographic
     operations. For the time being we will not configure any other IAM users
 
 >   **Note**
@@ -66,20 +66,20 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 >   any IAM policies can also give users and roles permission use the CMK for
 >   cryptographic operations.
 
-14.  (Optional) You can allow other AWS accounts to use this CMK for
+12.  (Optional) You can allow other AWS accounts to use this CMK for
     cryptographic operations. To do so, in the **Other AWS accounts** section at
     the bottom of the page, choose **Add another AWS account** and enter the AWS
     account identification number of an external account. To add multiple
     external accounts, repeat this step. For the time being we will skip this
     step, so no accounts will be configured
 
-15.  Choose **Next**.
+13.  Choose **Next**.
 
-16.  Review the key policy document that was created from your choices. You can
+14.  Review the key policy document that was created from your choices. You can
     edit it, too.
 
 ![/images](images/507e2bc692f033be78dfb46bfa11b073.png)
 
-17.  Choose **Finish** to create the CMK.
+15.  Choose **Finish** to create the CMK.
 
 Proceed to the [next lab (Secrets Manager Lab)](../05-Secrets-Manager-Lab/README.md)
