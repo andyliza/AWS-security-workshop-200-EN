@@ -13,7 +13,7 @@ By doing this labs you will understand the basic services and security concepts 
 
 [3. Config Lab](03-Config-Lab/README.md)
 
-[4. KMS Lav](04-KMS-Lab/README.md)
+[4. KMS Lab](04-KMS-Lab/README.md)
 
 [5. Secrets Manager Lab](05-Secrets-Manager-Lab/README.md)
 
