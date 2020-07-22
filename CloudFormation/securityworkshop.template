@@ -620,7 +620,7 @@
       "Webserver":{
          "Type":"AWS::EC2::Instance",
          "Properties":{
-            "ImageId":"ami-0aaa810916c0671a0",
+            "ImageId":"ami-0f1479804f10851d5",
             "SecurityGroupIds":[
                {"Ref":"WEBSG"}
 
