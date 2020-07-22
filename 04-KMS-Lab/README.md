@@ -12,7 +12,11 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 
 4.  Choose **Create key**.
 
-5.  Type an alias for the CMK – *techshiftkey2019*. The alias name cannot begin
+5. In **Step 1** we will select the key type that we want to create. In our case it will be a __Symetric__ key.
+
+![/images](images/symetric.png)
+
+6.  Type an alias for the CMK – *security-wrokshop-key*. The alias name cannot begin
     with **aws/**. The **aws/** prefix is reserved by Amazon Web Services to
     represent AWS managed CMKs in your account.
 
@@ -25,7 +29,7 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 
 ![/images](images/a1e125f5a8912c59e287aac9c09ded4b.png)
 
-6.  (Optional) Type a description for the CMK.
+7.  (Optional) Type a description for the CMK.
 
 >   Enter a description that explains the type of data you plan to protect or
 >   the application you plan to use with the CMK. Don't use the description
@@ -38,17 +42,6 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 >   Deletion. To add, change, or delete the description of an existing customer
 >   managed CMK, [edit the CMK](https://docs.aws.amazon.com/kms/latest/developerguide/editing-keys.html#editing-keys-console) in
 >   the AWS Management Console or use the *UpdateKeyDescription* operation.
-
-7.  Choose **Next**.
-
-9.  (Optional) Type a tag key and an optional tag value. To add more than one
-    tag to the CMK, choose **Add tag**.
-
->   When you add tags to your AWS resources, AWS generates a cost allocation
->   report with usage and costs aggregated by tags. For information about
->   tagging CMKs, see [Tagging Keys](https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html).
-
-![/images](images/f7a88fb45e9a11f30667b57531d683d3.png)
 
 10.  Choose **Next**.
 
@@ -70,6 +63,8 @@ You can use the AWS Management Console to create customer master keys (CMKs).
 >   The AWS account (root user) has full permissions by default. As a result,
 >   any IAM policies can also give users and roles permission use the CMK for
 >   cryptographic operations.
+
+![/images](images/keyadminperm.png)
 
 14.  (Optional) You can allow other AWS accounts to use this CMK for
     cryptographic operations. To do so, in the **Other AWS accounts** section at

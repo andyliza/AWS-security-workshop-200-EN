@@ -17,7 +17,7 @@
 
 4)  Select the following 3 rules:
 * ec2-instance-detailed-monitoring-enabled
-* cloudtrail-enabled 
+* cloudtrail-enabled
 * multi-region-cloudtrail-enabled
 
 **:heavy_exclamation_mark: Use the search bar to find them.** Click *Next* once done.
@@ -41,15 +41,15 @@
 
 ![images](images/7d7b49f223c61764d8af1d1a00f597cb.png)
 
-As we can see there is an alarm raised. This alarm states that there is an EC2 instance that does not have "Detailed Monitoring" Enabled. Let’s proceed and remediate this
+As we can see there is an alarm raised. This alarm states that there are two EC2 instances that don't not have "Detailed Monitoring" Enabled. Let’s proceed and remediate this
 alarm.
 
 9)  Lets click on the alarm and see what EC2 instance does not comply with our configuration rule. Take note of the instance ID so we can remediate this alarm.
 
 ![images](images/config-bad-rule.png)
 
-10)  Now that we have the EC2 instance that is not compliant let's go and enable the "Detaied Monitoring". Go to the *EC2 console* and under __Instances__ search for the 
-instance ID that has the alarm. 
+10)  Now that we have the EC2 instance that is not compliant let's go and enable the "Detaied Monitoring". Go to the *EC2 console* and under __Instances__ search for the
+instance ID that has the alarm.
 
 ![images](images/6ca4ad538d4c9721fa5ee1deaf09ea43.png)
 
@@ -60,6 +60,8 @@ instance ID that has the alarm.
 12)  Click __Yes, Enable__ and then click __Close__ .
 
 ![images](images/yes-enable-dm.png)
+
+**:heavy_exclamation_mark: Repeat step 9 - 12 for the second instance.**
 
 13)  After enbling the detail monitoring, return to the AWS Config Console and re-evaluate the rule that shows the alarm.
 
